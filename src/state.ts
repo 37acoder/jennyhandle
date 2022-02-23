@@ -29,12 +29,7 @@ export const isDev = params.get('dev') === 'hey'
 export const daySince = useDebounce(computed(() => Math.floor((+now.value - +START_DATE) / 86400000)))
 export const dayNo = ref(+(params.get('d') || daySince.value))
 export const answer = computed(() =>
-  params.get('word')
-    ? {
-      word: params.get('word')!,
-      hint: getHint(params.get('word')!),
-    }
-    : getAnswerOfDay(dayNo.value),
+  getAnswerOfDay(dayNo.value),
 )
 
 export const hint = computed(() => answer.value.hint)

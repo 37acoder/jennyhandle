@@ -5,14 +5,12 @@ import { answers } from './list'
 import { RANDOM_SEED } from '~/logic'
 
 const DATA_SET = DATA.length
+var count = 0
 
 export function getAnswerOfDay(day: number) {
-  let [word = '', hint = ''] = answers[day] || []
+  let [word = '', hint = ''] = []
   if (!word) {
-    const rng = seedrandom(RANDOM_SEED)
-    for (let i = 0; i <= day; i++)
-      rng()
-    word = DATA[Math.floor(rng() * DATA_SET - 1)][0]
+    word = DATA[Math.floor(Math.random() * DATA_SET - 1)][0]
   }
   if (!hint)
     hint = getHint(word)
